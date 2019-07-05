@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  margin: 25px;
+}
+
+input, label {
+  display: block;
+}
+
+input {
+  margin-top: 2px;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-image: none;
+  height: 30px;
+}
