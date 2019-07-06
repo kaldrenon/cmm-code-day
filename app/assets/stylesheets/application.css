@@ -16,6 +16,16 @@
 
 body {
   font-family: sans-serif;
+  background: #F0F8FF;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .container {
