@@ -20,7 +20,17 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(user_params)
+  end
+
   def login
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to action: 'list'
   end
 
   private

@@ -7,6 +7,6 @@
       %span &vert;
       = user.email
       %span &vert;
-      %a(href="/users/${user.id}/edit") edit
+      %a(href="/users/#{user.id}/edit") edit
       %span &vert;
-      %a(href="/users/${user.id}/delete") delete
+      = link_to 'delete', user_path(user), method: :delete
