@@ -1,0 +1,8 @@
+- if logged_in?
+  %p
+    %span Hello
+    %span=current_user.username
+    = link_to 'log out', { controller: :sessions, action: :destroy }, method: :delete
+- else
+  = link_to 'log in', '/login'
+

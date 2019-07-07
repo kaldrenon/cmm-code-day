@@ -1,9 +1,9 @@
 %div.container
   %h1 Please log in
-  %form
-    %label(for="user") User
-    %input(name="user" type="text")
-    %label(for="Password") Password
-    %input(type="password")
-    %input(type="submit" value="Log in" action="/login" formmethod="post")
+  =form_for(:session, url: '/login') do |f|
+    = f.label :username
+    = f.text_field :username, class: 'form-control'
+    = f.label :password
+    = f.password_field :password, class: 'form-control'
+    = f.submit "log in", class: 'btn btn-primary'
     %a(href="/users/register") Register
