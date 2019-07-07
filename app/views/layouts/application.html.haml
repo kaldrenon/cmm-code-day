@@ -2,11 +2,12 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title CoverMeds
+    %title CoverMyMeds Code Day
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link(href="https://fonts.googleapis.com/css?family=Lato:100i,300,400,400i,700,900&display=swap" rel="stylesheet")
   %body
     = render 'layouts/navbar'
     - flash.each do |key, value|
