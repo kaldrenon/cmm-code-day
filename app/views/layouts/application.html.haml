@@ -12,4 +12,5 @@
     - flash.each do |key, value|
       %div(class="alert")
         = "#{key} - #{value}"
-    = yield
+    %div.app-container
+      = yield

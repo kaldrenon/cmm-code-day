@@ -3,9 +3,9 @@
 %table
   %thead
     %tr
-      %th Numfield
-      %th Textfield
-      %th Title
+      %th(class="numfield") Numfield
+      %th(class="textfield") Textfield
+      %th(class="title")  Title
       %th
       %th
       %th
@@ -13,9 +13,9 @@
   %tbody
     - @items.each do |item|
       %tr
-        %td= item.numfield
-        %td= item.textfield
-        %td= item.title
+        %td(class="numfield")= item.numfield
+        %td(class="textfield")= item.textfield
+        %td(class="title")= item.title
         %td= link_to 'Show', item
         %td= link_to 'Edit', edit_item_path(item)
         %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
