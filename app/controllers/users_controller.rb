@@ -3,13 +3,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "You signed up successfully"
-      flash[:color]= "valid"
+      flash.now[:notice] = "You signed up successfully"
+      redirect_to '/login'
     else
-      flash[:notice] = "Form is invalid"
-      flash[:color]= "invalid"
+      flash.now[:notice] = @user.errors.full_messages
+      redirect_to action: 'register'
     end
-    redirect_to action: 'login'
   end
 
   def register
@@ -33,6 +32,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(
+      :username, :email, :password, :password_confirmation
+    )
   end
 end

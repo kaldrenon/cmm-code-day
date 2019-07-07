@@ -13,7 +13,6 @@ RSpec.describe User, type: :model do
     # Username
     it 'requires a username' do
       @user.username = nil
-      puts @user.errors
       expect(@user.valid?).to be false
       expect(@user.errors[:username].include? "can't be blank").to be true
     end
