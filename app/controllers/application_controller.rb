@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   include SessionsHelper
 
+  before_action :require_user
+
   private
 
   def current_user
@@ -13,5 +15,13 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def require_user
+    if current_user
+      true
+    else
+      redirect_to '/login'
+    end
   end
 end

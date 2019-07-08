@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:start, :stop, :show, :edit, :update, :destroy]
-  before_action :require_user
 
   # GET /tasks
   # GET /tasks.json
@@ -97,11 +96,4 @@ class TasksController < ApplicationController
       params.require(:task).permit(:project_id, :description, :customer_id, :project_id, :user_id)
     end
 
-    def require_user
-      if current_user
-        true
-      else
-        redirect_to '/login'
-      end
-    end
 end
