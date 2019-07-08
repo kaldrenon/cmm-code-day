@@ -1,4 +1,10 @@
-%h1 Tasks for current user
+- @title ||= "Tasks for #{current_user.username}"
+%h1= @title
+
+- if @all_tasks
+  = link_to 'See just your tasks', tasks_path
+- else
+  = link_to 'See all tasks', all_tasks_path
 
 %table
   %thead
@@ -6,10 +12,12 @@
       %th Project
       %th Description
       %th Customer
-      %th Project
-      %th
-      %th
-      %th
+      - if @all_tasks
+        %th Employee
+      %th Task time
+      %th.link
+      %th.link
+      %th.link
 
   %tbody
     - @tasks.each do |task|
@@ -17,10 +25,12 @@
         %td= task.project_id
         %td= task.description
         %td= task.customer_id
-        %td= task.project_id
-        %td= link_to 'Show', task
-        %td= link_to 'Edit', edit_task_path(task)
-        %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+        - if @all_tasks
+          %td= current_user.username
+        %td= task.pretty_time
+        %td.link= link_to 'Show', task
+        %td.link= link_to 'Edit', edit_task_path(task)
+        %td.link= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

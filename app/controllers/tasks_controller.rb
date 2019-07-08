@@ -10,6 +10,10 @@ class TasksController < ApplicationController
 
   def all
     @tasks = Task.all
+    @title = "Tasks for all users"
+    @all_tasks = true
+
+    render :index
   end
 
   # GET /tasks/1

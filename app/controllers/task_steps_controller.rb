@@ -14,7 +14,7 @@ class TaskStepsController < ApplicationController
 
   # GET /task_steps/new
   def new
-    @task_step = TaskStep.new
+    @task_step = TaskStep.new(task_id: params[:task_id])
   end
 
   # GET /task_steps/1/edit

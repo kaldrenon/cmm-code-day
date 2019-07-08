@@ -10,4 +10,8 @@ class Task < ApplicationRecord
 
     return duration
   end
+
+  def pretty_time
+    Time.at(work_time).utc.strftime("%H:%M")
+  end
 end

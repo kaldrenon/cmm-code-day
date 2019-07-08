@@ -9,13 +9,10 @@
 %p
   %b Customer:
   = @task.customer_id
-%p
-  %b Project:
-  = @task.project_id
 
 %p
   %b Time Worked:
-  = Time.at(@task.work_time).utc.strftime("%H:%M:%S")
+  = @task.pretty_time
 
 %table
   - @task_steps.each do |ts|
@@ -26,10 +23,13 @@
       %td
         - if !ts.stopped
           = link_to 'Stop', stop_task_path(@task)
+      %td= link_to 'edit', edit_task_step_path(ts)
 
 = link_to 'Start', start_task_path(@task)
 \|
 = link_to 'Stop', stop_task_path(@task)
+\|
+= link_to 'Manual Add', new_task_step_path(task_id: @task.id)
 \|
 = link_to 'Edit', edit_task_path(@task)
 \|

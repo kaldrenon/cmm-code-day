@@ -15,9 +15,6 @@
   .field
     = f.label :customer_id
     = f.number_field :customer_id
-  .field
-    = f.label :project_id
-    = f.number_field :project_id
   = f.hidden_field :user_id, value: (current_user ? current_user.id : nil)
 
   .actions
