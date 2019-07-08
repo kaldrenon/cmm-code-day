@@ -74,6 +74,10 @@ input {
   color: white;
 }
 
+.navbar .nav-user {
+  float: right;
+}
+
 table {
   border-collapse: collapse;
 }

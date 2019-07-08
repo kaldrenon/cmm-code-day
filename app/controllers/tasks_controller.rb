@@ -1,15 +1,21 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:start, :stop, :show, :edit, :update, :destroy]
+  before_action :require_user
 
   # GET /tasks
   # GET /tasks.json
   def index
+    @tasks = Task.where(user_id: current_user.id)
+  end
+
+  def all
     @tasks = Task.all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @task_steps = TaskStep.where(task_id: @task.id)
   end
 
   # GET /tasks/new
@@ -19,6 +25,21 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+  end
+
+  def start
+    new_step = TaskStep.new(task_id: @task.id, started: DateTime.now)
+    new_step.save!
+
+    redirect_to action: :show
+  end
+
+  def stop
+    last_step = TaskStep.where(task_id: @task.id).order(started: :desc).first
+    last_step.stopped = DateTime.now
+    last_step.save!
+
+    redirect_to action: :show
   end
 
   # POST /tasks
@@ -69,6 +90,14 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:project_id, :description, :customer_id, :project_id)
+      params.require(:task).permit(:project_id, :description, :customer_id, :project_id, :user_id)
+    end
+
+    def require_user
+      if current_user
+        true
+      else
+        redirect_to '/login'
+      end
     end
 end

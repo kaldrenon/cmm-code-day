@@ -13,6 +13,24 @@
   %b Project:
   = @task.project_id
 
+%p
+  %b Time Worked:
+  = Time.at(@task.work_time).utc.strftime("%H:%M:%S")
+
+%table
+  - @task_steps.each do |ts|
+    %tr
+      %td=ts.id
+      %td=ts.started
+      %td=ts.stopped
+      %td
+        - if !ts.stopped
+          = link_to 'Stop', stop_task_path(@task)
+
+= link_to 'Start', start_task_path(@task)
+\|
+= link_to 'Stop', stop_task_path(@task)
+\|
 = link_to 'Edit', edit_task_path(@task)
 \|
 = link_to 'Back', tasks_path

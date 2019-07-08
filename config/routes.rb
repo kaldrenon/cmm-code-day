@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :task_steps
-  resources :tasks
-  resources :items
+  resources :tasks do
+    get '/all', action: :all
+
+    member do
+      get 'start'
+      get 'stop'
+    end
+  end
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
