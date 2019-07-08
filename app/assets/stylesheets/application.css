@@ -87,8 +87,15 @@ table thead tr {
 }
 
 table tr td, table tr th {
+  text-align: left;
   display: inline-block;
   margin: 15px;
+  width: 150px;
+  word-wrap: break-word;
+}
+
+table tr td.link, table tr th.link {
+  width: 60px;
 }
 
 table tr .numfield {

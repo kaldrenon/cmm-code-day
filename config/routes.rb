@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :customers
+  resources :projects
   resources :task_steps
   resources :tasks do
-    get '/all', action: :all
+    collection do
+      get :all
+    end
 
     member do
       get 'start'
