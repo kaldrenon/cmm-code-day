@@ -4,20 +4,20 @@ FactoryBot.define do
   end
 
   factory :project do
-    customer_id { 1 }
+    customer
     title { "MyString" }
   end
 
   factory :task_step do
-    task_id { 1 }
+    task
     started { "2019-07-08 11:19:05" }
     stopped { "2019-07-08 11:19:10" }
   end
 
   factory :task do
-    project_id { 1 }
+    project
+    user
     description { "MyString" }
-    customer_id { 1 }
 
     factory :task_with_steps do
       transient do

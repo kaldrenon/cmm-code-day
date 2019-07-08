@@ -2,13 +2,13 @@
 
 %p
   %b Project:
-  = @task.project_id
+  = @task.project.title
 %p
   %b Description:
   = @task.description
 %p
   %b Customer:
-  = @task.customer_id
+  = @task.project.customer.name
 
 %p
   %b Time Worked:
@@ -17,9 +17,9 @@
 %table
   - @task_steps.each do |ts|
     %tr
-      %td=ts.id
-      %td=ts.started
-      %td=ts.stopped
+      %td= ts.id
+      %td= pretty_time(ts.started)
+      %td= pretty_time(ts.stopped) if ts.stopped
       %td
         - if !ts.stopped
           = link_to 'Stop', stop_task_path(@task)

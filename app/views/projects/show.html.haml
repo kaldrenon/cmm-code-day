@@ -11,12 +11,12 @@
     %tr
       %th Task
       %th Time Worked
-      %th User Id
+      %th User
     - @tasks.each do |task|
       %tr
         %td= task.description
         %td= task.pretty_time
-        %td= task.user_id
+        %td= task.user.username
     %tr
       %td Total Work Time
       %td= @project.pretty_total_time

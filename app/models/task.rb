@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   has_many :task_steps
+  belongs_to :project
+  belongs_to :user
 
   def work_time
     @task_steps = TaskStep.where(task_id: self.id)

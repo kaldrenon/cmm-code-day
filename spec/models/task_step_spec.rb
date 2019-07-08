@@ -33,4 +33,16 @@ RSpec.describe TaskStep, type: :model do
       end
     end
   end
+
+  describe 'validations' do
+    it 'stopped cannot be earlier than started' do
+      ts = build(:task_step, stopped: Time.now, started: Time.now + 1.days)
+      expect(ts.valid?).to eq false
+    end
+
+    it 'must have a start time' do
+      ts = build(:task_step, started: nil)
+      expect(ts.valid?).to eq false
+    end
+  end
 end

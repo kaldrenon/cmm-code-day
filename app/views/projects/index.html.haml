@@ -5,15 +5,16 @@
     %tr
       %th Customer
       %th Title
-      %th
+      %th Total Time
       %th
       %th
 
   %tbody
     - @projects.each do |project|
       %tr
-        %td= project.customer_id
+        %td= project.customer.name
         %td= project.title
+        %td= project.pretty_total_time
         %td= link_to 'Show', project
         %td= link_to 'Edit', edit_project_path(project)
         %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
