@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Task:
+  = @task_step.task_id
+%p
+  %b Started:
+  = @task_step.started
+%p
+  %b Stopped:
+  = @task_step.stopped
+
+= link_to 'Edit', edit_task_step_path(@task_step)
+\|
+= link_to 'Back', task_steps_path

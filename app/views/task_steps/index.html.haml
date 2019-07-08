@@ -1,0 +1,25 @@
+%h1 Listing task_steps
+
+%table
+  %thead
+    %tr
+      %th Task
+      %th Started
+      %th Stopped
+      %th
+      %th
+      %th
+
+  %tbody
+    - @task_steps.each do |task_step|
+      %tr
+        %td= task_step.task_id
+        %td= task_step.started
+        %td= task_step.stopped
+        %td= link_to 'Show', task_step
+        %td= link_to 'Edit', edit_task_step_path(task_step)
+        %td= link_to 'Destroy', task_step, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Task step', new_task_step_path

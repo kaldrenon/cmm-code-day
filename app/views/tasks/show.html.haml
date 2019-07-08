@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @task.project_id
+%p
+  %b Description:
+  = @task.description
+%p
+  %b Customer:
+  = @task.customer_id
+%p
+  %b Project:
+  = @task.project_id
+
+= link_to 'Edit', edit_task_path(@task)
+\|
+= link_to 'Back', tasks_path
